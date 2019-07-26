@@ -14,3 +14,16 @@ To run Go generator use such command:
 
 After this you can find Generated types and methods for gRPC in src/protodata/protofile.pb.go 
 
+## Running
+To test notifications
+1. Run grpc server:
+
+  `go run src/grpc-server.go`
+  
+2. Run grpc client:
+
+  `go run src/grpc-client.go`
+  
+3. Run command:
+
+  `curl localhost:8083/test`
