@@ -18,7 +18,7 @@ const (
 )
 
 type grpcClient struct {
-	client protodata.NotifierClient
+	client protodata.ReplyStreamerClient
 }
 
 func (gc *grpcClient) getConnection(address string) {
@@ -28,11 +28,11 @@ func (gc *grpcClient) getConnection(address string) {
 		log.Fatalf("gRPC connection error: %v", err)
 	}
 
-	gc.client = protodata.NewNotifierClient(conn)
+	gc.client = protodata.NewReplyStreamerClient(conn)
 }
 
 func (gc grpcClient) sendToServer() {
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 5 * time.Second)
 	defer cancel()
 
 	var infoName string = "Hello!"
@@ -67,7 +67,7 @@ func main() {
 	cli := grpcClient{}
 	cli.getConnection(serverAddress)
 
-	http.HandleFunc("/test", cli.handler)
+	http.HandleFunc("/test", go cli.handler)
 	log.Print("Server started")
 	log.Fatal(http.ListenAndServe(inputPort, nil))
 }
