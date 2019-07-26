@@ -158,7 +158,7 @@ func init() {
 func init() { proto.RegisterFile("protodata/protofile.proto", fileDescriptor_6c94b1cc746634b8) }
 
 var fileDescriptor_6c94b1cc746634b8 = []byte{
-	// 183 bytes of a gzipped FileDescriptorProto
+	// 187 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0x2c, 0x28, 0xca, 0x2f,
 	0xc9, 0x4f, 0x49, 0x2c, 0x49, 0xd4, 0x07, 0xb3, 0xd2, 0x32, 0x73, 0x52, 0xf5, 0xc0, 0x2c, 0x21,
 	0xb6, 0xbc, 0xfc, 0x92, 0xcc, 0xb4, 0x4a, 0x25, 0x1d, 0x2e, 0x16, 0xcf, 0xbc, 0xb4, 0x7c, 0x21,
@@ -166,11 +166,11 @@ var fileDescriptor_6c94b1cc746634b8 = []byte{
 	0x48, 0x80, 0x8b, 0xd9, 0xaf, 0x34, 0x57, 0x82, 0x49, 0x81, 0x51, 0x83, 0x35, 0x08, 0xc4, 0x54,
 	0xd2, 0xe5, 0xe2, 0x06, 0xa9, 0x0e, 0x4a, 0x2d, 0x2c, 0x4d, 0x2d, 0x2e, 0x11, 0x92, 0xe3, 0x62,
 	0xce, 0x4d, 0x2d, 0x06, 0xeb, 0xe1, 0x36, 0xe2, 0xd1, 0x83, 0x18, 0xa9, 0x07, 0x56, 0x01, 0x92,
-	0x50, 0xd2, 0xe6, 0xe2, 0x84, 0x28, 0x2f, 0xc8, 0xa9, 0x24, 0xa4, 0xd8, 0xc8, 0x99, 0x8b, 0xc3,
-	0x0f, 0x24, 0x96, 0x99, 0x5a, 0x24, 0x64, 0xce, 0xc5, 0xe9, 0x9b, 0x5a, 0x5c, 0x9c, 0x98, 0x9e,
-	0x99, 0x97, 0x2e, 0x24, 0x8c, 0xa2, 0x16, 0x62, 0xb5, 0x94, 0x20, 0xaa, 0x60, 0x41, 0x4e, 0xa5,
-	0x12, 0x83, 0x01, 0x63, 0x12, 0x1b, 0xd8, 0x77, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0x08,
-	0x95, 0xdc, 0xfa, 0xfa, 0x00, 0x00, 0x00,
+	0x50, 0xd2, 0xe6, 0xe2, 0x84, 0x28, 0x2f, 0xc8, 0xa9, 0x24, 0xa4, 0xd8, 0xc8, 0x83, 0x8b, 0x17,
+	0xac, 0x30, 0xb8, 0xa4, 0x28, 0x35, 0x31, 0x37, 0xb5, 0x48, 0xc8, 0x9c, 0x8b, 0xd3, 0x37, 0xb5,
+	0xb8, 0x38, 0x31, 0x3d, 0x33, 0x2f, 0x5d, 0x48, 0x18, 0x45, 0x03, 0xc4, 0x7e, 0x29, 0x41, 0x54,
+	0xc1, 0x82, 0x9c, 0x4a, 0x25, 0x06, 0x03, 0xc6, 0x24, 0x36, 0xb0, 0x17, 0x8d, 0x01, 0x01, 0x00,
+	0x00, 0xff, 0xff, 0x63, 0xf6, 0x6b, 0x41, 0xff, 0x00, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -181,27 +181,27 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// NotifierClient is the client API for Notifier service.
+// ReplyStreamerClient is the client API for ReplyStreamer service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type NotifierClient interface {
-	Messaging(ctx context.Context, in *InfoRequest, opts ...grpc.CallOption) (Notifier_MessagingClient, error)
+type ReplyStreamerClient interface {
+	Messaging(ctx context.Context, in *InfoRequest, opts ...grpc.CallOption) (ReplyStreamer_MessagingClient, error)
 }
 
-type notifierClient struct {
+type replyStreamerClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewNotifierClient(cc *grpc.ClientConn) NotifierClient {
-	return &notifierClient{cc}
+func NewReplyStreamerClient(cc *grpc.ClientConn) ReplyStreamerClient {
+	return &replyStreamerClient{cc}
 }
 
-func (c *notifierClient) Messaging(ctx context.Context, in *InfoRequest, opts ...grpc.CallOption) (Notifier_MessagingClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Notifier_serviceDesc.Streams[0], "/notify.Notifier/Messaging", opts...)
+func (c *replyStreamerClient) Messaging(ctx context.Context, in *InfoRequest, opts ...grpc.CallOption) (ReplyStreamer_MessagingClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_ReplyStreamer_serviceDesc.Streams[0], "/notify.ReplyStreamer/Messaging", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &notifierMessagingClient{stream}
+	x := &replyStreamerMessagingClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -211,16 +211,16 @@ func (c *notifierClient) Messaging(ctx context.Context, in *InfoRequest, opts ..
 	return x, nil
 }
 
-type Notifier_MessagingClient interface {
+type ReplyStreamer_MessagingClient interface {
 	Recv() (*InfoReply, error)
 	grpc.ClientStream
 }
 
-type notifierMessagingClient struct {
+type replyStreamerMessagingClient struct {
 	grpc.ClientStream
 }
 
-func (x *notifierMessagingClient) Recv() (*InfoReply, error) {
+func (x *replyStreamerMessagingClient) Recv() (*InfoReply, error) {
 	m := new(InfoReply)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -228,52 +228,52 @@ func (x *notifierMessagingClient) Recv() (*InfoReply, error) {
 	return m, nil
 }
 
-// NotifierServer is the server API for Notifier service.
-type NotifierServer interface {
-	Messaging(*InfoRequest, Notifier_MessagingServer) error
+// ReplyStreamerServer is the server API for ReplyStreamer service.
+type ReplyStreamerServer interface {
+	Messaging(*InfoRequest, ReplyStreamer_MessagingServer) error
 }
 
-// UnimplementedNotifierServer can be embedded to have forward compatible implementations.
-type UnimplementedNotifierServer struct {
+// UnimplementedReplyStreamerServer can be embedded to have forward compatible implementations.
+type UnimplementedReplyStreamerServer struct {
 }
 
-func (*UnimplementedNotifierServer) Messaging(req *InfoRequest, srv Notifier_MessagingServer) error {
+func (*UnimplementedReplyStreamerServer) Messaging(req *InfoRequest, srv ReplyStreamer_MessagingServer) error {
 	return status.Errorf(codes.Unimplemented, "method Messaging not implemented")
 }
 
-func RegisterNotifierServer(s *grpc.Server, srv NotifierServer) {
-	s.RegisterService(&_Notifier_serviceDesc, srv)
+func RegisterReplyStreamerServer(s *grpc.Server, srv ReplyStreamerServer) {
+	s.RegisterService(&_ReplyStreamer_serviceDesc, srv)
 }
 
-func _Notifier_Messaging_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _ReplyStreamer_Messaging_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(InfoRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(NotifierServer).Messaging(m, &notifierMessagingServer{stream})
+	return srv.(ReplyStreamerServer).Messaging(m, &replyStreamerMessagingServer{stream})
 }
 
-type Notifier_MessagingServer interface {
+type ReplyStreamer_MessagingServer interface {
 	Send(*InfoReply) error
 	grpc.ServerStream
 }
 
-type notifierMessagingServer struct {
+type replyStreamerMessagingServer struct {
 	grpc.ServerStream
 }
 
-func (x *notifierMessagingServer) Send(m *InfoReply) error {
+func (x *replyStreamerMessagingServer) Send(m *InfoReply) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _Notifier_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "notify.Notifier",
-	HandlerType: (*NotifierServer)(nil),
+var _ReplyStreamer_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "notify.ReplyStreamer",
+	HandlerType: (*ReplyStreamerServer)(nil),
 	Methods:     []grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "Messaging",
-			Handler:       _Notifier_Messaging_Handler,
+			Handler:       _ReplyStreamer_Messaging_Handler,
 			ServerStreams: true,
 		},
 	},

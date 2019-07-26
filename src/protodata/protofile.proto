@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package notify;
 
-service Notifier {
+service ReplyStreamer {
     rpc Messaging (InfoRequest) returns (stream InfoReply) {}
 }
 
