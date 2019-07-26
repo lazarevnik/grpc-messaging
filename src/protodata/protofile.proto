@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package notify;
+
+service Notifier {
+    rpc Messaging (InfoRequest) returns (stream InfoReply) {}
+}
+
+message Info {
+    string Name = 1;
+    int32 Num = 2;
+}
+
+message InfoRequest {
+    Info mes = 1;
+}
+
+message InfoReply {
+    Info mes = 1;
+}
